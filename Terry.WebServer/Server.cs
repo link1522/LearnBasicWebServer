@@ -44,6 +44,7 @@ public class Server
         context.Response.OutputStream.Close();
 
         sem.Release();
+        Log(context.Request);
     }
 
     private static List<IPAddress> GetLocalHostIPs()
@@ -67,5 +68,10 @@ public class Server
         });
 
         return listener;
+    }
+
+    public static void Log(HttpListenerRequest request)
+    {
+        Console.WriteLine($"{request.RemoteEndPoint} {request.HttpMethod} {request.Url?.AbsoluteUri}");
     }
 }
