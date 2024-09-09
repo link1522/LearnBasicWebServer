@@ -7,6 +7,19 @@ namespace Terry.WebServer;
 
 public class Server
 {
+    public enum ServerError
+    {
+        OK,
+        ExpiredSession,
+        NotAuthorized,
+        FileNotFound,
+        PageNotFound,
+        ServerError,
+        UnknownType,
+        VaildationError,
+        AjaxError,
+    }
+
     public static int maxSimultaneousConnections = 20;
     private static Semaphore sem = new Semaphore(maxSimultaneousConnections, maxSimultaneousConnections);
 
